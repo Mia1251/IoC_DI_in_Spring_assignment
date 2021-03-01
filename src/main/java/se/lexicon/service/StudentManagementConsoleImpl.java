@@ -31,7 +31,7 @@ public class StudentManagementConsoleImpl implements StudentManagement {
     @Override
     public Student create() {
         System.out.println("Enter your name: ");
-        String studentName = UserInputService.getString();
+        String studentName = scannerService.getString();
         Student addStudent = new Student();
         addStudent.setName(studentName);
         return save(addStudent);
@@ -75,7 +75,7 @@ public class StudentManagementConsoleImpl implements StudentManagement {
         Student original = find(student.getId());
 
         System.out.println("Edit students name: ");
-        String editName = UserInputService.getString();
+        String editName = scannerService.getString();
         original.setName(editName);
 
         return original;

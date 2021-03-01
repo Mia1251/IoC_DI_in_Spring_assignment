@@ -13,6 +13,7 @@ public class App {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ComponentScanConfig.class);
         StudentDao studentDao = context.getBean(StudentDao.class);
         UserInputService scannerService = context.getBean(UserInputService.class);
+        StudentManagement studentManagement = context.getBean(StudentManagement.class);
 
 
     }
