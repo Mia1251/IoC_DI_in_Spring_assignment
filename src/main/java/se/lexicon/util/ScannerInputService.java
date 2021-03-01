@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Scanner;
 
-public class ScannerInputService implements UserInputService{
+public class ScannerInputService implements UserInputService {
 
     public Scanner scanner;
 

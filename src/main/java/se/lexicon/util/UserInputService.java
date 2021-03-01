@@ -3,7 +3,7 @@ package se.lexicon.util;
 public interface UserInputService {
 
 
-    String getString();
+    static String getString();
 
     int getInt();
 
