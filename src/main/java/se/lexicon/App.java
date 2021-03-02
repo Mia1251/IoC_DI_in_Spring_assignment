@@ -56,7 +56,10 @@ public class App {
         List<Student> findAll1 = studentManagement.findAll();
         findAll1.forEach(System.out::println);
 
+        System.out.println("-----------------------------------------------------");
+
         Student editStudent = studentManagement.edit(student4);
+
         System.out.println("-----------------------------------------------------");
 
         System.out.println("List of all enlisted students after editing: ");
