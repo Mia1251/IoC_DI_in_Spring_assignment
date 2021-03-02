@@ -6,21 +6,18 @@ import se.lexicon.data_access.StudentDao;
 import se.lexicon.models.Student;
 import se.lexicon.util.UserInputService;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
 
 @Component
 public class StudentManagementConsoleImpl implements StudentManagement {
 
-    Set<Student> students = new HashSet<>();
-    private UserInputService scannerService;
+
+    private UserInputService userInputService;
     private StudentDao studentDao;
 
     @Autowired
-    public void setScannerService(UserInputService scannerService) {
-        this.scannerService = scannerService;
+    public void setScannerService(UserInputService userInputService) {
+        this.userInputService = userInputService;
     }
 
     @Autowired
@@ -31,7 +28,7 @@ public class StudentManagementConsoleImpl implements StudentManagement {
     @Override
     public Student create() {
         System.out.println("Enter your name: ");
-        String studentName = scannerService.getString();
+        String studentName = userInputService.getString();
         Student addStudent = new Student();
         addStudent.setName(studentName);
         return save(addStudent);
@@ -46,10 +43,10 @@ public class StudentManagementConsoleImpl implements StudentManagement {
 
     @Override
     public Student find(int id) {
-        if (id == 0) {
-            throw new IllegalArgumentException("No student found with id: ");
-        }
-        return find(id);
+        if (id == 0)
+            throw new IllegalArgumentException("No student found with id: " + id);
+
+        return studentDao.find(id);
     }
 
     @Override
@@ -58,7 +55,6 @@ public class StudentManagementConsoleImpl implements StudentManagement {
         if (removeStudent == null)
             throw new IllegalArgumentException("Student not found with id: " + id);
         studentDao.delete(id);
-
         return removeStudent;
     }
 
@@ -74,8 +70,8 @@ public class StudentManagementConsoleImpl implements StudentManagement {
             throw new IllegalArgumentException("Student id can't be null");
         Student original = find(student.getId());
 
-        System.out.println("Edit students name: ");
-        String editName = scannerService.getString();
+        System.out.println("Edit student name: ");
+        String editName = userInputService.getString();
         original.setName(editName);
 
         return original;

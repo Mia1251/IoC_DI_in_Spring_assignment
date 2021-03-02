@@ -1,9 +1,10 @@
 package se.lexicon.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
-
+@Component
 public class ScannerInputService implements UserInputService {
 
     public Scanner scanner;
@@ -15,13 +16,13 @@ public class ScannerInputService implements UserInputService {
 
     @Override
     public String getString() {
-        String input = scanner.nextLine();
-        return input;
+        return scanner.nextLine();
+
     }
 
     @Override
     public int getInt() {
-        int numbers = scanner.nextInt();
-        return numbers;
+        return  scanner.nextInt();
+
     }
 }
